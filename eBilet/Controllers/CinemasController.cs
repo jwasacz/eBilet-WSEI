@@ -15,8 +15,8 @@ namespace eBilet.Controllers
 
         public IActionResult Index()
         {
-            var data = _context.Cinemas.ToList();
-            return View();
+            var allCinemas = _context.Cinemas.ToList();
+            return View(allCinemas);
         }
     }
 }
