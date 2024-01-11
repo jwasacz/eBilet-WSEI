@@ -1,5 +1,6 @@
 ﻿using eBilet.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eBilet.Controllers
 {
@@ -12,9 +13,9 @@ namespace eBilet.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var allMovies = _context.Movies.ToList();
+            var allMovies = await _context.Movies.Include(n=> n.Cinema).OrderBy(n => n.Name).ToListAsync();
             return View(allMovies);
         }
     }
