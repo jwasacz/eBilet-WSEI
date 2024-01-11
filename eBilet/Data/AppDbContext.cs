@@ -1,9 +1,12 @@
-﻿using eBilet.Models;
+﻿using eBilet.Areas.Identity.Data;
+using eBilet.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace eBilet.Data
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext: IdentityDbContext<eBiletUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {
@@ -31,4 +34,5 @@ namespace eBilet.Data
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Producer> Producers { get; set; }
     }
+ 
 }
