@@ -11,6 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
 builder.Services.AddDefaultIdentity<eBiletUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
 var app = builder.Build();
 
@@ -25,6 +26,22 @@ app.MapRazorPages();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+    context.Database.Migrate();
+    // requires using Microsoft.Extensions.Configuration;
+    // Set password with the Secret Manager tool.
+    // dotnet user-secrets set SeedUserPW <pw>
+
+    var testUserPw = builder.Configuration.GetValue<string>("SeedUserPW");
+
+    await TestUsersSeeder.Initialize(services, testUserPw);
+
+    AppDbInitializer.Seed(app);
+}
+
 app.UseRouting();
 app.UseAuthentication();;
 
@@ -35,7 +52,7 @@ app.MapControllerRoute(
     pattern: "{controller=Movies}/{action=Index}/{id?}");
 
 //Seed database
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 
 
 app.Run();
