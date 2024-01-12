@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using Microsoft.AspNetCore.Identity;
 using eBilet.Areas.Identity.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,3 +57,9 @@ app.MapControllerRoute(
 
 
 app.Run();
+
+
+//Strt Project Comands
+//Update-Database
+//cd eBilet
+//dotnet user-secrets set SeedUserPW Admin123!

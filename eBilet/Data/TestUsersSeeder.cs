@@ -13,8 +13,9 @@ namespace eBilet.Data
             {
                 // For sample purposes seed both with the same password.
                 // Password is set with the following:
-                // dotnet user-secrets set SeedUserPW <pw>
-                // The admin user can do anything
+                // cd eBilet
+                // dotnet user-secrets set SeedUserPW <password>
+               
 
                 var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@eBilet.com");
                 await EnsureRole(serviceProvider, adminID, Constants.AuthorizationConstants.AdministratorsRole);
