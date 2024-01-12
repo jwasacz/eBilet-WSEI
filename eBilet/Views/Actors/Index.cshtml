@@ -1,48 +1,48 @@
-﻿@model IEnumerable<Actor>
-
+﻿@model IEnumerable<eBilet.Models.Actor>
 
 @{
-    ViewData["Title"] = "List of Actors";
+    ViewData["Title"] = "Actors";
 }
 
+<h1>Actors</h1>
 
 
-    <div class="col-md-8 offset-md-2">
-
-        <table class="table">
-            <thead>
-                <tr class="text-center">
-                    <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
-                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="align-middle">
-                            <img class="rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width: 150px" />
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Bio)
-                        </td>
-                        {
-                            <td class="align-middle">
-                                <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit </a> |
-                                <a class="btn btn-outline-info"><i class="bi bi-eye"></i>Details </a> |
-                                <a class="btn btn-danger text-white"><i class="bi bi-trash"></i>Delete </a>
-                            </td>
-                        }
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-    </div>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfilePictureURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td class="align-middle">
+                    <img class="rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width: 150px" />
+                </td>
+                <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+                <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Bio)
+            </td>
+                <td class="align-middle">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a class="btn btn-outline-success" asp-action="Create">Create New</a>
+</p>

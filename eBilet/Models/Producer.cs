@@ -15,6 +15,6 @@ namespace eBilet.Models
         public string Bio { get; set; }
 
         //Relacje
-        public List<Movie> Movies { get; set; }
+        public List<Movie>? Movies { get; set; }
     }
 }
