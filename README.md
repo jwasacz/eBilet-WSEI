@@ -1,21 +1,30 @@
 Dokumentacja Projektu ASP.NET MVC
 
-Spis Treści
+Spis Treści:
+
 1.Opis Projektu
+
 2.Struktura Projektu
+
 3.Instrukcje Instalacji
+
 4.Wymagania Systemowe
-5.Konfiguracja
-6.Opis Funkcjonalności
-7.Baza Danych
-8.Autoryzacja Użytkowników
-9.API CRUD
-10.Instrukcje Uruchomienia Projektu
-11.Działające Elementy
+
+5.Opis Funkcjonalności
+
+6.Baza Danych
+
+7.Autoryzacja Użytkowników
+
+8.API CRUD
+
+9.Instrukcje Uruchomienia Projektu
+
+10.Działające Elementy
 
 
 1. Opis Projektu
-Projekt jest aplikacją webową zbudowaną w oparciu o framework ASP.NET MVC. Aplikacja ma na celu zarządzanie danymi związanymi z aktorami, kinami, producentami, filmami, itp. Projekt stosuje wzorzec architektoniczny MVC (Model-View-Controller) dla lepszego zorganizowania kodu i łatwiejszej utrzymanie.
+Projekt jest aplikacją webową zbudowaną w oparciu o framework ASP.NET MVC. Aplikacja ma na celu zarządzanie danymi związanymi z aktorami, kinami, producentami, filmami, itp. Projekt stosuje wzorzec MVC (Model-View-Controller) dla lepszego zorganizowania kodu i łatwiejszej utrzymanie.
 
 2. Struktura Projektu
 Projekt podzielony jest na kilka głównych komponentów:
@@ -40,21 +49,6 @@ Uruchom projekt.
 4. Wymagania Systemowe
 Do uruchomienia projektu wymagane jest środowisko .NET Core 3.1 lub nowsze.
 
-5. Konfiguracja
-Łańcuch Połączenia z Bazą Danych
-Konfiguracja łańcucha połączenia z bazą danych znajduje się w pliku appsettings.json.
-
-json
-Copy code
-"ConnectionStrings": {
-  "DevConnection": "your_database_connection_string"
-}
-Testowi Użytkownicy
-Testowe hasło administratora należy ustawić za pomocą narzędzia Secret Manager:
-
-bash
-Copy code
-dotnet user-secrets set SeedUserPW your_admin_password
 
 6. Opis Funkcjonalności
 Projekt oferuje następujące funkcjonalności:
